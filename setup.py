@@ -557,7 +557,7 @@ class PyBuildExt(build_ext):
             print()
 
     def build_extension(self, ext):
-
+        '''
         if ext.name == '_ctypes':
             if not self.configure_ctypes(ext):
                 self.failed.append(ext.name)
@@ -570,6 +570,8 @@ class PyBuildExt(build_ext):
                           (ext.name, why))
             self.failed.append(ext.name)
             return
+        '''
+        pass
 
     def check_extension_import(self, ext):
         # Don't try to import an extension that has failed to compile

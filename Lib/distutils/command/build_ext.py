@@ -460,18 +460,22 @@ class build_ext(Command):
         if workers is None:
             self._build_extensions_serial()
             return
-
+        '''
         with ThreadPoolExecutor(max_workers=workers) as executor:
             futures = [executor.submit(self.build_extension, ext)
                        for ext in self.extensions]
             for ext, fut in zip(self.extensions, futures):
                 with self._filter_build_errors(ext):
                     fut.result()
+        '''
 
     def _build_extensions_serial(self):
+        pass
+        '''
         for ext in self.extensions:
             with self._filter_build_errors(ext):
                 self.build_extension(ext)
+        '''
 
     @contextlib.contextmanager
     def _filter_build_errors(self, ext):
@@ -484,6 +488,7 @@ class build_ext(Command):
                       (ext.name, e))
 
     def build_extension(self, ext):
+        '''
         sources = ext.sources
         if sources is None or not isinstance(sources, (list, tuple)):
             raise DistutilsSetupError(
@@ -558,6 +563,8 @@ class build_ext(Command):
             debug=self.debug,
             build_temp=self.build_temp,
             target_lang=language)
+        '''
+        pass
 
     def swig_sources(self, sources, extension):
         """Walk the list of source files in 'sources', looking for SWIG
